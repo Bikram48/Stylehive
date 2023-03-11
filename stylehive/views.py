@@ -2,9 +2,14 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
+from decorators import dashboard_permission
 
 def home(request):
-    return HttpResponse("Home")
+    return render(request, "home.html", {})
+
+@dashboard_permission 
+def admin_dashboard(request):
+    return render(request, "admin_dashboard.html", {})
 
 def user_login(request):
     if request.method == 'POST':
