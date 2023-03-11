@@ -54,7 +54,9 @@ ROOT_URLCONF = 'stylehive.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            '/Users/bikram/Dev/Stylehive/stylehive/templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
