@@ -2,6 +2,31 @@
 
 {% block content %}
 
-    <h1>Register</h1>
+    <div class="sign-up-form">
+        <h1>Register</h1>
+        <form method="post" action="">
+            <input type="text" class="input-box" name='username' value="" placeholder="Enter Username">
 
+            <input type="email" class="input-box"  name='email' value=""  placeholder="Enter email">
+
+            <input type="text" class="input-box" name='phone_number' value="" placeholder="Enter Phone Number">
+            
+            <input type="text" class="input-box" name='dob' value="" placeholder="Enter Date Of Birth">
+            
+            <input type="text" class="input-box" name='age' value="" placeholder="Enter Your Age">
+            
+            <input type="password" class="input-box" name='pwd' value="" placeholder="Enter Password">
+            
+            <input type="password" class="input-box" name='confir_pwd' value="" placeholder="Confirm Password">
+            
+            <label style="font-family:sans-serif;font-size:14px;" for="image">Choose a picture</label>
+            <input style="margin-left:30px;margin-top:10px;" type="file" name="image" id="image">
+            
+            
+            <input type="submit" class="signup-btn" name='submit' value="Signup">
+            <hr>
+            <p class="or">OR</p>
+            <p>Do you have an account ? <a href="Login.php">Sign in</a></p>
+        </form>
+    </div>
 {% endblock %}
