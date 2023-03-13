@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-Username: {{request.user}}
-Email: {{request.user.email}}
+<p>  Username: {{request.user}}</p>
+<img width="200" height="200" src="{{request.user.customer.profile_img.url}}" alt="">
+<form action="">
+
+</form>
 
 {% endblock %}
