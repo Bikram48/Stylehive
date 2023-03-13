@@ -3,8 +3,11 @@
 {% block content %}
 <p>  Username: {{request.user}}</p>
 <img width="200" height="200" src="{{request.user.customer.profile_img.url}}" alt="">
-<form action="">
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
 
+    <input type="submit">
 </form>
 
 {% endblock %}

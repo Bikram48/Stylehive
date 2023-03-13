@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from forms import ProfileForm
 from django.contrib.auth import login, authenticate
 from decorators import dashboard_permission
 
@@ -8,7 +9,19 @@ def home(request):
     return render(request, "home.html", {})
 
 def user_profile(request):
-    return render(request, "user_profile.html", {})
+    form = ProfileForm(instance=request.user.customer)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.customer)
+
+        if form.is_valid():
+            form.save()
+
+    context = {
+        "form": form
+    }
+
+    return render(request, "user_profile.html", context)
 
 @dashboard_permission 
 def admin_dashboard(request):
