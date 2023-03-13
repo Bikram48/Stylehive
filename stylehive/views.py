@@ -7,6 +7,9 @@ from decorators import dashboard_permission
 def home(request):
     return render(request, "home.html", {})
 
+def user_profile(request):
+    return render(request, "user_profile.html", {})
+
 @dashboard_permission 
 def admin_dashboard(request):
     return render(request, "admin_dashboard.html", {})

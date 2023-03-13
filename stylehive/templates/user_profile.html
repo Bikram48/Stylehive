@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+Username: {{request.user}}
+Email: {{request.user.email}}
+
+{% endblock %}
