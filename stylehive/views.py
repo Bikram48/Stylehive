@@ -11,6 +11,9 @@ def home(request):
 def product_page(request):
     return render(request, "products.html", {})
 
+def view_single_product(request):
+    return render(request, "product_description.html", {})
+
 def user_profile(request):
     form = ProfileForm(instance=request.user.customer)
 

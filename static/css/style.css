@@ -62,9 +62,17 @@ ul li a {
     padding: 2em;
 }
 
-.product-content a {
+.product-content a,
+.single-product a {
     display: inline-block;
     border: 1px solid silver;
     border-radius: .5em;
     padding: 1em;
+}
+
+.single-product {
+    padding: 4em;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 3em;
 }

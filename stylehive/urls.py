@@ -25,6 +25,7 @@ urlpatterns = [
     path('', product_page, name='products'),
     path('login/', user_login, name='login'),
     path('register/', user_registration, name='register' ),
+    path('product/', view_single_product, name='product'),
     path('dashboard/', admin_dashboard, name='admin'),
     path('profile/', user_profile, name='profile'),
 ]
