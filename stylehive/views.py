@@ -14,6 +14,9 @@ def product_page(request):
 def view_single_product(request):
     return render(request, "product_description.html", {})
 
+def cart_page(request):
+    return render(request, "cart.html", {})
+
 def user_profile(request):
     form = ProfileForm(instance=request.user.customer)
 
