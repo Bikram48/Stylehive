@@ -16,8 +16,14 @@ body {
     background-color: #E3E3E3;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 a {
     color: #484848;
+    text-decoration: none;
 }
 
 a:hover {
@@ -27,7 +33,7 @@ a:hover {
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 2em;
     border-bottom: 1px solid silver;
 }
 
@@ -48,4 +54,17 @@ ul li {
 ul li a {
     text-decoration: none;
     padding: 2em;
+}
+
+.products {
+    display: flex;
+    column-gap: 2em;
+    padding: 2em;
+}
+
+.product-content a {
+    display: inline-block;
+    border: 1px solid silver;
+    border-radius: .5em;
+    padding: 1em;
 }

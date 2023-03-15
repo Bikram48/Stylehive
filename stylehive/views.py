@@ -8,6 +8,9 @@ from decorators import dashboard_permission
 def home(request):
     return render(request, "home.html", {})
 
+def product_page(request):
+    return render(request, "products.html", {})
+
 def user_profile(request):
     form = ProfileForm(instance=request.user.customer)
 
