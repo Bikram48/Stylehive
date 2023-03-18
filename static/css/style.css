@@ -43,6 +43,11 @@ nav {
     align-items: center;
 }
 
+.left-header ul,
+.right-header ul {
+    display: flex;
+}
+
 .logo-image h2 {
     font-family: 'Rubik Iso', cursive;
 }
@@ -53,7 +58,7 @@ ul li {
 
 ul li a {
     text-decoration: none;
-    padding: 2em;
+    padding: 1em;
 }
 
 .products {

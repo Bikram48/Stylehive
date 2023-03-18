@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from forms import ProfileForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from decorators import dashboard_permission
 
 def home(request):
@@ -32,9 +32,9 @@ def user_profile(request):
 
     return render(request, "user_profile.html", context)
 
-@dashboard_permission 
-def admin_dashboard(request):
-    return render(request, "admin_dashboard.html", {})
+# @dashboard_permission 
+# def admin_dashboard(request):
+#     return render(request, "admin_dashboard.html", {})
 
 def user_login(request):
     if request.method == 'POST':
@@ -44,7 +44,7 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('products')
         else:
             print("User doesn't exist")
       
@@ -66,3 +66,7 @@ def user_registration(request):
     }
 
     return render(request, "register.html", context)
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
