@@ -7,7 +7,7 @@ class Product(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     price = models.FloatField(validators=[MinValueValidator(50.00), MaxValueValidator(5000.00)])
-    image = models.ImageField()
+    image = models.ImageField(blank=True)
 
     def __str__(self):
         return self.title

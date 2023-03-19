@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
-from forms import ProfileForm
+from forms import ProductForm
 from django.contrib.auth import login, authenticate, logout
 from decorators import dashboard_permission
 
@@ -18,23 +18,35 @@ def cart_page(request):
     return render(request, "cart.html", {})
 
 def user_profile(request):
-    form = ProfileForm(instance=request.user.customer)
+    # form = ProfileForm(instance=request.user.customer)
+
+    # if request.method == 'POST':
+    #     form = ProfileForm(request.POST, request.FILES, instance=request.user.customer)
+
+    #     if form.is_valid():
+    #         form.save()
+
+    # context = {
+    #     "form": form
+    # }
+
+    return render(request, "user_profile.html", {})
+
+# @dashboard_permission 
+def admin_dashboard(request):
+    form = ProductForm()
 
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=request.user.customer)
-
+        form = ProductForm(request.POST, request.FILES)
+        
         if form.is_valid():
             form.save()
-
+            return redirect('products')
+        
     context = {
         "form": form
     }
-
-    return render(request, "user_profile.html", context)
-
-# @dashboard_permission 
-# def admin_dashboard(request):
-#     return render(request, "admin_dashboard.html", {})
+    return render(request, "admin_dashboard.html", context)
 
 def user_login(request):
     if request.method == 'POST':

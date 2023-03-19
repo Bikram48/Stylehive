@@ -118,3 +118,18 @@ hr {
     background-color: silver;
     height: 1px;
 }
+
+/* Login CSS */
+.form {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

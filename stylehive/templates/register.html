@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="form">
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        Already have an account?<a href="{% url 'login' %}">Login</a><br><br>
-        <input type="submit" value="REGISTER"/>
+        <fieldset>
+            <legend>Register</legend>
+            {{ form.as_p }}
+            Already have an account?<a href="{% url 'login' %}"> Login</a><br><br>
+            <input type="submit" value="REGISTER"/>
+        </fieldset>
     </form>
+</div>
 {% endblock %}

@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<form action="" method="post">
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="Enter Username"/><br><br>
-    <input type="password" name="password" placeholder="Enter Password" /><br><br>
-    Don't have an account?<a href="{% url 'register' %}">Register</a><br><br>
-    <input type="submit" value="Login"/>
-</form>
+
+<div class="form">
+    <form action="" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Login</legend>
+            <input type="text" name="username" placeholder="Enter Username"/><br><br>
+            <input type="password" name="password" placeholder="Enter Password" /><br><br>
+            Don't have an account?<a href="{% url 'register' %}"> Register</a><br><br>
+            <input type="submit" value="Login"/>
+        </fieldset>
+    </form>
+</div>
+
 {% endblock %}
