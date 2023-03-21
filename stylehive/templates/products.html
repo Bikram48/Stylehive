@@ -4,7 +4,21 @@
 {% block content %}
 
 <div class="products">
+    {% for product in products %}
     <div class="column">
+        <div class="product-img">
+            <img src="../../media/{{product.image}}" alt="">
+        </div>
+        <div class="product-content">
+            <h3>{{product.title}}</h3>
+            <p class="description">{{product.description}}</p>
+            <p class="price">{{product.price}}</p>
+            <a href="">Add to Cart</a>
+            <a href="">View</a>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- <div class="column">
         <div class="product-img">
             <img src="{% static 'images/placeholder.jpeg' %}" alt="">
         </div>
@@ -36,17 +50,6 @@
             <a href="">Add to Cart</a>
             <a href="">View</a>
         </div>
-    </div>
-    <div class="column">
-        <div class="product-img">
-            <img src="{% static 'images/placeholder.jpeg' %}" alt="">
-        </div>
-        <div class="product-content">
-            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto earum doloribus laudantium totam voluptatem quam quae odit corrupti nam tempore voluptatibus facilis quasi in temporibus, a provident culpa reprehenderit. Culpa.</p>
-            <p class="price">20$</p>
-            <a href="">Add to Cart</a>
-            <a href="">View</a>
-        </div>
-    </div>
+    </div> -->
 </div>
 {% endblock %}

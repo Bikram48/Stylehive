@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from forms import ProductForm
+from products.models import Product
 from django.contrib.auth import login, authenticate, logout
 from decorators import dashboard_permission
 
@@ -9,7 +10,12 @@ def home(request):
     return render(request, "home.html", {})
 
 def product_page(request):
-    return render(request, "products.html", {})
+    products = Product.objects.all()
+
+    context = {
+        "products": products
+    }
+    return render(request, "products.html", context)
 
 def view_single_product(request):
     return render(request, "product_description.html", {})
