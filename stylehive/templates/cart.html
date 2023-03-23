@@ -6,6 +6,7 @@
     <h1>Cart</h1>
     <hr>
     <br><br><br><br>
+    {% if order_items %}
     <table id="customers">
         <tr>
         <th></th>
@@ -14,21 +15,25 @@
         <th>Quantity</th>
         <th>Total</th>
         </tr>
-        {% for order in orders %}
+        {% for order in order_items %}
         <tr>
         <td>
           {% if order.product.image %}
             <img src="{{order.product.image.url}}">
           {% endif %}
         </td>
-        <td>${{order.product|floatformat:2}}</td>
-        <td>{{order.product.price}}</td>
+        <td>{{order.product}}</td>
+        <td>${{order.product.price|floatformat:2}}</td>
         <td>{{order.quantity}}</td>
         <td>${{order.get_total|floatformat:2}}</td>
         </tr>
 
         {% endfor %}
+        Total Price: {{orders.cart_total}}
   </table>  
+  {% else %}
+  <h1>Cart is empty</h1>
+  {% endif %}
 </div>
 
 {% endblock %}

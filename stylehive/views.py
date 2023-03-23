@@ -26,13 +26,16 @@ def cart_page(request):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer)
         order_items = order.orderitem_set.all()
-
-        context = {
-            "orders": order_items
-        }
+    else:
+        order_items = []
 
         print(order_items)
         # print(order)
+
+    context = {
+        "order_items": order_items,
+        "orders": order
+    }
 
     return render(request, "cart.html", context)
 
