@@ -7,12 +7,14 @@
     {% for product in products %}
     <div class="column">
         <div class="product-img">
-            <img src="../../media/{{product.image}}" alt="">
+            {% if product.image %}
+            <img src="{{product.image.url}}" alt="">
+            {% endif %}
         </div>
         <div class="product-content">
             <h3>{{product.title}}</h3>
             <p class="description">{{product.description}}</p>
-            <p class="price">{{product.price}}</p>
+            <p class="price">{{product.price|floatformat:2}}</p>
             <a href="">Add to Cart</a>
             <a href="">View</a>
         </div>
