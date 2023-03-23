@@ -13,10 +13,18 @@ class Product(models.Model):
         return self.title
 
 class Order(models.Model):
+    status = (
+        ('delivered', 'delivered'),
+        ('pending', 'pending')
+    )
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
-    status = models.BooleanField(default=False)
+    status = models.CharField(choices=status, max_length=100)
     trans_id = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        if self is not None:
+            return str(self.id)
 
 
 class OrderItem(models.Model):
@@ -26,7 +34,12 @@ class OrderItem(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
+    @property
+    def get_total(self):
+        total = self.quantity * self.product.price
+        return total
     
 class Shipping(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)

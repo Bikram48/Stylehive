@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from forms import ProductForm
-from products.models import Product
+from products.models import *
 from django.contrib.auth import login, authenticate, logout
 from decorators import dashboard_permission
 
@@ -21,7 +21,20 @@ def view_single_product(request):
     return render(request, "product_description.html", {})
 
 def cart_page(request):
-    return render(request, "cart.html", {})
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer)
+        order_items = order.orderitem_set.all()
+
+        context = {
+            "orders": order_items
+        }
+
+        print(order_items)
+        # print(order)
+
+    return render(request, "cart.html", context)
 
 def user_profile(request):
     # form = ProfileForm(instance=request.user.customer)

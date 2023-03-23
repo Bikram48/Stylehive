@@ -14,13 +14,20 @@
         <th>Quantity</th>
         <th>Total</th>
         </tr>
+        {% for order in orders %}
         <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-        <td>Germany</td>
-        <td>Germany</td>
+        <td>
+          {% if order.product.image %}
+            <img src="{{order.product.image.url}}">
+          {% endif %}
+        </td>
+        <td>${{order.product|floatformat:2}}</td>
+        <td>{{order.product.price}}</td>
+        <td>{{order.quantity}}</td>
+        <td>${{order.get_total|floatformat:2}}</td>
         </tr>
+
+        {% endfor %}
   </table>  
 </div>
 
